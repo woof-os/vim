@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/acutewoof'
+let g:netrw_dirhist_5='/home/acutewoof/Projects/python/fetch-walls'
+let g:netrw_dirhist_4='/home/acutewoof/.config/qtile/config'
+let g:netrw_dirhist_3='/home/acutewoof/.config/qtile'
+let g:netrw_dirhist_2='/home/acutewoof/.config/qtile/__pycache__'
+let g:netrw_dirhist_1='/home/acutewoof/.config/qtile'
+let g:netrw_dirhist_0='/'
+let g:netrw_dirhist_9='/home'
+let g:netrw_dirhist_8='/home/acutewoof'
+let g:netrw_dirhist_7='/home/acutewoof/.config/qtile'
