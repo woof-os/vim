@@ -1,17 +1,30 @@
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'do': 'npm install' }
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'etdev/vim-hexcolor'
+Plug 'gko/vim-coloresque'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier'
 Plug 'pucka906/vdrpc' 
 Plug 'vim-python/python-syntax'
 Plug 'ambv/black'
 Plug 'ryanoasis/vim-devicons'
+Plug 'stevearc/vim-arduino'
+Plug 'etdev/vim-hexcolor'
 Plug 'arcticicestudio/nord-vim'
 Plug 'airblade/vim-gitgutter'
 
@@ -62,17 +75,6 @@ let g:javascript_plugin_flow = 1
 let g:vim_jsx_pretty_colorful_config = 1 " default 0
 let g:vdrpc_autostart = 1
 
-let g:lightline = {
-	\ 'colorscheme': 'nord',
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ],
-	\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-	\ },
-	\ 'component_function': {
-	\   'cocstatus': 'coc#status'
-	\ },
-	\ }
-
 """ prettier
 
 let g:prettier#autoformat = 1
@@ -121,14 +123,14 @@ let g:prettier#config#require_pragma = 'false'
 let g:prettier#config#end_of_line = get(g:, 'prettier#config#end_of_line', 'lf')
 "
 
+let g:nord_style = "night"
 let g:python_highlight_all = 1
-let g:nord_enable_italic = 1
 colorscheme nord
 
 set hlsearch
 highlight Comment cterm=italic term=italic
-" highlight PythonClasses cterm=italic term=italic ctermfg=Green
-" match PythonClasses /self/
+highlight PythonClasses cterm=italic term=italic ctermfg=Green
+match PythonClasses /self/
 
 set mouse=a
 set laststatus=2
